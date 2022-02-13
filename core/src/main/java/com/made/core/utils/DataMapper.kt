@@ -15,7 +15,7 @@ object DataMapper {
             val game = GameEntity(
                 id = it.id,
                 name = it.name,
-                description = it.descriptionRaw,
+                description = "",
                 released = it.released ?: "No Data",
                 image = it.backgroundImage,
                 metaScore = it.metacritic ?: 0,
@@ -107,27 +107,31 @@ object DataMapper {
         val publisher = StringBuilder().append("")
         val developer = StringBuilder().append("")
 
-        if (data.platforms != null && data.publishers != null && data.genres != null && data.developers != null) {
-
+        if (data.platforms != null) {
             data.platforms.forEach {
-                platform.append(it.name).append("-")
+                platform.append(it.platform.name).append(",")
             }
+        } else platform.append("None")
 
+        if (data.publishers != null) {
             data.publishers.forEach {
-                publisher.append(it.name).append("-")
+                publisher.append(it.name).append(",")
             }
+        } else publisher.append("None")
 
+        if (data.genres != null) {
             data.genres.forEach {
-                genre.append(it.name).append("-")
+                genre.append(it.name).append(",")
             }
+        } else genre.append("None")
 
+        if (data.developers != null) {
             data.developers.forEach {
-                developer.append(it.name).append("-")
+                developer.append(it.name).append(",")
             }
+        } else developer.append("None")
 
-        }
-
-        return listOf(platform.removeSuffix("-").toString(), genre.removeSuffix("-").toString(), publisher.removeSuffix("-").toString(), developer.removeSuffix("-").toString())
+        return listOf(platform.removeSuffix(",").toString(), genre.removeSuffix(",").toString(), publisher.removeSuffix(",").toString(), developer.removeSuffix(",").toString())
     }
 
 }

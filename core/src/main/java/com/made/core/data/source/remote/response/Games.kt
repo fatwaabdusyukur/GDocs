@@ -18,9 +18,9 @@ data class Games(
     @SerializedName("genres")
     val genres: List<Genre>?,
     @SerializedName("publishers")
-    val publishers: List<Publisher>,
+    val publishers: List<Publisher>?,
     @SerializedName("developers")
-    val developers: List<Developer>,
+    val developers: List<Developer>?,
     @SerializedName("description_raw")
     val descriptionRaw: String
 )
