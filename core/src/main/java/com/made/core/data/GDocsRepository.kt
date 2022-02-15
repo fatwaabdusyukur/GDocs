@@ -37,10 +37,25 @@ class GDocsRepository(
 
         }.asFlow()
 
-    override fun getGameById(id: Int): Flow<Game> =
-        localDataSource.getGame(id).map {
-            DataMapper.mapEntityToDomain(it)
-        }
+    override fun getGameById(id: Int): Flow<Resource<Game>> =
+        object : NetworkBoundResource<Game, Games>() {
+            override fun loadFromDB(): Flow<Game> =
+                localDataSource.getGame(id).map {
+                    DataMapper.mapEntityToDomain(it)
+                }
+
+            override fun shouldFetch(data: Game?): Boolean =
+                data?.description == "" || data == null
+
+            override suspend fun createCall(): Flow<ApiResponse<Games>> =
+                remoteDataSource.getGameById(id)
+
+            override suspend fun saveCallResult(data: Games) {
+                val game = DataMapper.mapResponseToEntity(data)
+                localDataSource.insertGame(game)
+            }
+
+        }.asFlow()
 
     override fun getFavoriteGame(): Flow<List<Game>> =
         localDataSource.getFavoriteGame().map {

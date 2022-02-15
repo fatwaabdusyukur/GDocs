@@ -14,5 +14,5 @@ data class Game(
     val publisher : String,
     val developers : String,
     val genres : String,
-    val isFavorite : Boolean
+    var isFavorite : Boolean
 ) : Parcelable

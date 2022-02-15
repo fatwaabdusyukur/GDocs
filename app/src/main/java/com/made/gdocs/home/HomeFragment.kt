@@ -1,15 +1,17 @@
 package com.made.gdocs.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import com.made.core.data.Resource
 import org.koin.android.viewmodel.ext.android.viewModel
 import com.made.gdocs.databinding.FragmentHomeBinding
+import com.made.gdocs.detail.DetailActivity
 
 class HomeFragment : Fragment() {
 
@@ -31,11 +33,9 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val gameAdapter = GameAdapter {
-            Snackbar.make(
-                binding.containerHome,
-                it.name,
-                Snackbar.LENGTH_SHORT
-            ).show()
+            val i = Intent(context, DetailActivity::class.java)
+            i.putExtra(DetailActivity.GAME_ID, it.id)
+            startActivity(i)
         }
 
         homeViewModel.getAllGame().observe(viewLifecycleOwner,  { game ->
@@ -46,7 +46,10 @@ class HomeFragment : Fragment() {
                         binding.loading.visibility = View.GONE
                         gameAdapter.setData(game.data!!)
                     }
-                    is Resource.Error -> binding.loading.visibility = View.GONE
+                    is Resource.Error -> {
+                        Toast.makeText(context, "${game.message}", Toast.LENGTH_SHORT).show()
+                        binding.loading.visibility = View.GONE
+                    }
                 }
             }
         })

@@ -25,4 +25,16 @@ class RemoteDataSource(private val apiServices: ApiServices) {
             }
         }.flowOn(Dispatchers.IO)
 
+    fun getGameById(id : Int) : Flow<ApiResponse<Games>> =
+        flow {
+            try {
+                val res = apiServices.getGameById(id, BuildConfig.API_KEY)
+                if (res != null) emit(ApiResponse.Success(res))
+                else emit(ApiResponse.Empty)
+            } catch (e : Exception) {
+                emit(ApiResponse.Error(e.message.toString()))
+                Log.e("RemoteDataSource", e.message.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+
 }

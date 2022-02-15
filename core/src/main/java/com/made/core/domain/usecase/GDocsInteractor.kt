@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 class GDocsInteractor(private val repository: IGDocsRepository) : GDocsUseCase {
     override fun getAllGame(): Flow<Resource<List<Game>>> = repository.getAllGame()
 
-    override fun getGameById(id: Int): Flow<Game> = repository.getGameById(id)
+    override fun getGameById(id: Int): Flow<Resource<Game>> = repository.getGameById(id)
 
     override fun getFavoriteGame(): Flow<List<Game>> = repository.getFavoriteGame()
 

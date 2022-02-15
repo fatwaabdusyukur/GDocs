@@ -9,7 +9,7 @@ interface GDocsUseCase {
 
     fun getAllGame() : Flow<Resource<List<Game>>>
 
-    fun getGameById(id : Int) : Flow<Game>
+    fun getGameById(id : Int) : Flow<Resource<Game>>
 
     fun getFavoriteGame() : Flow<List<Game>>
 
