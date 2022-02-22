@@ -11,6 +11,8 @@ interface GDocsUseCase {
 
     fun getGameById(id : Int) : Flow<Resource<Game>>
 
+    fun getGamesByPlatform(keyword : String) : Flow<List<Game>>
+
     fun getFavoriteGame() : Flow<List<Game>>
 
     fun setFavoriteGame(game: Game, scope: CoroutineScope)

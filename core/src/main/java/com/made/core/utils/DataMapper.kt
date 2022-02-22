@@ -134,4 +134,15 @@ object DataMapper {
         return listOf(platform.removeSuffix(",").toString(), genre.removeSuffix(",").toString(), publisher.removeSuffix(",").toString(), developer.removeSuffix(",").toString())
     }
 
+    fun filterPlatform(game : List<GameEntity>, keyword : String) : List<Game> {
+        val games = mapEntitiesToDomain(game)
+        val results = ArrayList<Game>()
+        games.forEach { g ->
+            g.platforms.split(",").toList().filter { it.contains(keyword) }.map {
+                results.add(g)
+            }
+        }
+        return results
+    }
+
 }

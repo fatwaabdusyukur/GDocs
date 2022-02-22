@@ -11,6 +11,8 @@ class GDocsInteractor(private val repository: IGDocsRepository) : GDocsUseCase {
 
     override fun getGameById(id: Int): Flow<Resource<Game>> = repository.getGameById(id)
 
+    override fun getGamesByPlatform(keyword: String): Flow<List<Game>> = repository.getGamesByPlatform(keyword)
+
     override fun getFavoriteGame(): Flow<List<Game>> = repository.getFavoriteGame()
 
     override fun setFavoriteGame(game: Game, scope: CoroutineScope) = repository.setFavoriteGame(game, scope = scope)

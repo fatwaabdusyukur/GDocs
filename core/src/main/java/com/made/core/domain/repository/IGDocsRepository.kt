@@ -13,6 +13,8 @@ interface IGDocsRepository {
 
     fun getFavoriteGame() : Flow<List<Game>>
 
+    fun getGamesByPlatform(keyword : String) : Flow<List<Game>>
+
     fun setFavoriteGame(game: Game, scope: CoroutineScope)
 
 }

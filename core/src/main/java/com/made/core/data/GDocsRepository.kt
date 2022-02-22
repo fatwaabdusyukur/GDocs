@@ -62,6 +62,11 @@ class GDocsRepository(
             DataMapper.mapEntitiesToDomain(it)
         }
 
+    override fun getGamesByPlatform(keyword: String): Flow<List<Game>> =
+        localDataSource.getGamesByPlatform().map {
+            DataMapper.filterPlatform(it, keyword)
+        }
+
     override fun setFavoriteGame(game: Game, scope: CoroutineScope) {
         scope.launch(Dispatchers.IO) {
             val entity = DataMapper.mapDomainToEntity(game)

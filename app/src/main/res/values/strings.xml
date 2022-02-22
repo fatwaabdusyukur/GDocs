@@ -12,4 +12,6 @@
     <string name="genre">Genre</string>
     <string name="developer">Developer</string>
     <string name="publisher">Publisher</string>
+    <string name="imageview_desc">imageview_desc</string>
+    <string name="detail_platform_title_page">%s Detail Platform</string>
 </resources>

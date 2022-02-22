@@ -12,6 +12,8 @@ class LocalDataSource(private val dao : GDocsDao) {
 
     fun getFavoriteGame() : Flow<List<GameEntity>> = dao.getFavoriteGame()
 
+    fun getGamesByPlatform() : Flow<List<GameEntity>> = dao.getGamesByPlatform()
+
     suspend fun insertGame(games : GameEntity) = dao.insertGame(games)
 
     suspend fun updateGame(game : GameEntity) = dao.updateGame(game)
