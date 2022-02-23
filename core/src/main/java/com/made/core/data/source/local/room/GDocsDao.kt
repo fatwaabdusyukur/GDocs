@@ -19,7 +19,7 @@ interface GDocsDao {
     @Query("SELECT * FROM games WHERE id = :id")
     fun getGameById(id : Int) : Flow<GameEntity>
 
-    @Query("SELECT * FROM games WHERE isFavorite = 1")
+    @Query("SELECT * FROM games WHERE isFavorite == 1")
     fun getFavoriteGame() : Flow<List<GameEntity>>
 
     @Query("SELECT * FROM games")

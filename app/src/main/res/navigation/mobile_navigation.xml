@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.made.gdocs.favorite.FavoriteFragment"
+        android:name="com.made.gdocs.favorite.ui.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite"
         />

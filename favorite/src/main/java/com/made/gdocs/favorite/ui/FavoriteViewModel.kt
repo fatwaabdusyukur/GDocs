@@ -1,4 +1,4 @@
-package com.made.gdocs.favorite
+package com.made.gdocs.favorite.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

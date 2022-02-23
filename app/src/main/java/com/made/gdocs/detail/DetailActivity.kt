@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.made.core.data.Resource
 import com.made.core.domain.model.Game
+import com.made.gdocs.R
 import com.made.gdocs.databinding.ActivityDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class DetailActivity : AppCompatActivity() {
@@ -79,8 +79,23 @@ class DetailActivity : AppCompatActivity() {
                 gamePublisher.text = game.publisher
                 gameDeveloper.text = game.developers
 
+                val state: Boolean
+                val msg : String
+
+                if (game.isFavorite) {
+                    btnFavorite.text = resources.getString(R.string.favorited)
+                    state = false
+                    msg = "Game has been successfully deleted to favorites list"
+                } else {
+                    btnFavorite.text = resources.getString(R.string.favorite)
+                    state = true
+                    msg = "Game has been successfully added to favorites list"
+                }
+
+
                 btnFavorite.setOnClickListener {
-                    detailViewModel.setFavoriteGame(game, true)
+                    detailViewModel.setFavoriteGame(game, state)
+                    Snackbar.make(binding.detailContainer, msg, Snackbar.LENGTH_LONG).show()
                 }
             }
         }

@@ -3,8 +3,6 @@
     <string name="home">Home</string>
     <string name="platform">Platform</string>
     <string name="favorite">Favorite</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="game_image">Game Image</string>
     <string name="tv_toolbar">Movie Detail</string>
     <string name="synopsis">Synopsis</string>
@@ -14,4 +12,6 @@
     <string name="publisher">Publisher</string>
     <string name="imageview_desc">imageview_desc</string>
     <string name="detail_platform_title_page">%s Detail Platform</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="favorited">Favorited</string>
 </resources>

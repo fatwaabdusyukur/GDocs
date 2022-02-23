@@ -20,12 +20,13 @@ class GDocsRepository(
 
     override fun getAllGame(): Flow<Resource<List<Game>>> =
         object : NetworkBoundResource<List<Game>, List<Games>>() {
+
             override fun loadFromDB(): Flow<List<Game>> =
                 localDataSource.getAllGame().map {
                     DataMapper.mapEntitiesToDomain(it)
                 }
 
-            override fun shouldFetch(data: List<Game>?): Boolean = true
+            override fun shouldFetch(data: List<Game>?): Boolean = data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<Games>>> =
                 remoteDataSource.getAllGame()

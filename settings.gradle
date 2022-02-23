@@ -1,3 +1,4 @@
 rootProject.name = "GDocs"
 include ':app'
 include ':core'
+include ':favorite'
