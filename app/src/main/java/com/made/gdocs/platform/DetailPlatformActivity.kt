@@ -39,7 +39,10 @@ class DetailPlatformActivity : AppCompatActivity() {
 
         platformViewModel.getGamesByPlatform(keyword!!).observe(this) { game ->
             if (game.isNotEmpty()) gameAdapter.setData(game)
-            else binding.imgNotFound.visibility = View.VISIBLE
+            else {
+                binding.imgNotFound.visibility = View.VISIBLE
+                binding.tvGameNotFound.visibility = View.VISIBLE
+            }
         }
 
         binding.rvPlatformGames.apply {

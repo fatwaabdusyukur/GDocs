@@ -15,6 +15,7 @@ buildscript {
     ext.retrofit_version = "2.9.0"
     ext.room_version = "2.4.1"
     ext.lifecycle_version = "2.4.0"
+    ext.lottie_version = "5.0.1"
     
     repositories {
         google()

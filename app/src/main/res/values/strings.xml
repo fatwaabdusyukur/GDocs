@@ -14,4 +14,7 @@
     <string name="detail_platform_title_page">%s Detail Platform</string>
     <string name="title_favorite">Favorite</string>
     <string name="favorited">Favorited</string>
+    <string name="game_not_found">Game Not Found</string>
+    <string name="task_add_success">Game has been successfully added to favorites list</string>
+    <string name="task_delete_success">Game has been successfully deleted to favorites list</string>
 </resources>

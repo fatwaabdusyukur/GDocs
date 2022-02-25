@@ -41,6 +41,10 @@ class FavoriteFragment : Fragment() {
 
         favViewModel.getFavoriteGames().observe(viewLifecycleOwner) { game ->
             if (game.isNotEmpty()) gameAdapter.setData(game)
+            else {
+                binding.imgNotFound.visibility = View.VISIBLE
+                binding.tvGameNotFound.visibility = View.VISIBLE
+            }
         }
 
         binding.rvFavGame.apply {

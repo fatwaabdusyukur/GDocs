@@ -2,11 +2,9 @@ package com.made.gdocs.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.made.core.domain.model.Game
-import com.made.gdocs.R
 import com.made.gdocs.databinding.ItemsGameBinding
 
 class GameAdapter(

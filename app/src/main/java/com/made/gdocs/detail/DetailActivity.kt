@@ -58,8 +58,8 @@ class DetailActivity : AppCompatActivity() {
 
         if (game != null) {
 
-            val format = SimpleDateFormat("yyy-M-dd").parse(game.released)
-            val newDate = SimpleDateFormat("yyy-MMM-dd").format(format).toString().split("-").toList()
+            val format = SimpleDateFormat("yyy-M-dd", Locale.getDefault()).parse(game.released)
+            val newDate = SimpleDateFormat("yyy-MMM-dd", Locale.getDefault()).format(format!!).toString().split("-").toList()
 
             with(binding) {
                 Glide.with(this@DetailActivity)
@@ -85,11 +85,11 @@ class DetailActivity : AppCompatActivity() {
                 if (game.isFavorite) {
                     btnFavorite.text = resources.getString(R.string.favorited)
                     state = false
-                    msg = "Game has been successfully deleted to favorites list"
+                    msg = resources.getString(R.string.task_delete_success)
                 } else {
                     btnFavorite.text = resources.getString(R.string.favorite)
                     state = true
-                    msg = "Game has been successfully added to favorites list"
+                    msg = resources.getString(R.string.task_add_success)
                 }
 
 

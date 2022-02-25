@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".platform.DetailPlatformActivity"></activity>
+        <activity android:name=".platform.DetailPlatformActivity"/>
         <activity android:name=".detail.DetailActivity" />
         <activity
             android:name=".MainActivity"
