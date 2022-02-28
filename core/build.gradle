@@ -8,6 +8,11 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
+
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion 31
 
     defaultConfig {
@@ -44,10 +49,6 @@ android {
         }
 
     }
-
-	lintOptions {
-          abortOnError false
-      }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
